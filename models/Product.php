@@ -1,22 +1,27 @@
 <?php
 class Product {
-    protected $productName;
+    public $productName;
     protected $price;
+    public $productType;
+    
+    
+   public function __construct($_name,$_price, $_type=""){
+        $this->productName = $_name;
+        $this->price = $_price;
+        $this->productType =$_type;
+    }
+
+    
 
     public function getProductName(){
         return $this ->productName;
     }
 
-    public function setProductName($newProduct){
-        return $this->price = $newProduct;
-    } 
 
     public function getPrice(){
         return $this ->price;
     
     }
 
-    public function setPrice($newPrice){
-        return $this-> price = $newPrice;
-    }
+ 
 }

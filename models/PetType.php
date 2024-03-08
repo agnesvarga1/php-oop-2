@@ -1,8 +1,8 @@
 <?php
-class Pettype {
-    public $pettype;
+class Pettype  {
+    private $pettype;
 
-    function __construct($_pet){
+    public function __construct($_pet){
          $this ->pettype = $_pet;
     }
 }

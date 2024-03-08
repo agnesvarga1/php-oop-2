@@ -4,6 +4,14 @@ include_once __DIR__."./models/PetType.php";
 include_once __DIR__."./models/Food.php";
 include_once __DIR__."./models/Toy.php";
 include_once __DIR__."./models/Bed.php";
+
+
+$product1 = new Product("Premium meaty" , 2.50);
+$product2 = new Food("Premium Fish Sticks",1.50, new Pettype("cat"));
+var_dump($product1);
+var_dump($product2);
+
+
 ?>
 
 <!DOCTYPE html>

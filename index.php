@@ -6,10 +6,15 @@ include_once __DIR__."./models/Toy.php";
 include_once __DIR__."./models/Bed.php";
 
 
-$product1 = new Product("Premium meaty" , 2.50);
-$product2 = new Food("Premium Fish Sticks",1.50, new Pettype("cat"));
-var_dump($product1);
-var_dump($product2);
+$product1 = new Bed ("Luxory Cat Heaven",15.50,"./img/catbed.webp", new Pettype("cat"));
+$product2 = new Food("Premium Meat Delish",1.50, "./img/dogfood.jpg",new Pettype("dog"));
+$product3 = new Toy("Tennis Ball for Dogs",2.99,"./img/dogball.webp", new Pettype("dog"));
+// var_dump($product1);
+// var_dump($product2);
+
+$products =  [$product1, $product2,$product3];
+
+//var_dump($products);
 
 
 ?>

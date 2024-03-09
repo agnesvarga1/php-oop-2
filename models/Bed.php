@@ -10,10 +10,13 @@ class Bed extends Product {
          $this->img = $_img;
     }
    
- public function getData(){
-  
-   $details = [$this->prodCat , $this->img];
+ public function getimg(){
+  return $this->img;
+   
+ }
 
+ public function getCat(){
+    return $this->prodCat;
  }
 
 }

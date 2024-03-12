@@ -11,11 +11,17 @@ $product2 = new Food("Premium Meat Delish",1.59, "./imgs/dogfood.jpg",new Pettyp
 $product3 = new Toy("Tennis Ball for Dogs",2.99,"./imgs/dogball.webp", new Pettype("dog"));
 
 // var_dump($product2);
-$vote = $_POST["rate"];
+$vote = $_POST["rate"] ?? null;
 $product1->setRating(4);
+try{
+  $product2->setRating(10);
+  var_dump($product2->getRating);
+}catch(Exception $e){
+  echo $e->getMessage();
+}
 
 $products =  [$product1, $product2,$product3];
- var_dump($product1);
+ //var_dump($product1);
 //var_dump($products);
 
 
@@ -90,7 +96,7 @@ $products =  [$product1, $product2,$product3];
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Understood</button>
+        <button type="button" class="btn btn-primary">Add your vote</button>
       </div>
     </div>
   </div>

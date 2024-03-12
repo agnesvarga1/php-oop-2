@@ -1,9 +1,10 @@
 <?php
+require_once __DIR__ .  '/../traits/rates.php';
 class Toy extends Product {
     public $animal;
     public $prodCat = "Toy";
     public $img;
-    
+    use ProductRates;
  public function __construct($_productName , $_price,$_img,Pettype $_animal){
          parent :: __construct($_productName, $_price,$this->prodCat );
          $this->animal = $_animal;

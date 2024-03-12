@@ -9,14 +9,14 @@ require_once __DIR__."./traits/rates.php";
 $product1 = new Bed ("Luxory Cat Heaven",15.99,"./imgs/catbed.webp", new Pettype("cat"));
 $product2 = new Food("Premium Meat Delish",1.59, "./imgs/dogfood.jpg",new Pettype("dog"));
 $product3 = new Toy("Tennis Ball for Dogs",2.99,"./imgs/dogball.webp", new Pettype("dog"));
-// var_dump($product1);
-// var_dump($product2);
-$product4 = new Product("Small Feeding Bowl",2.88,new Pettype("cat"));
-$product4->setRating(4);
-//var_dump($product4);
-$products =  [$product1, $product2,$product3,$product4];
 
-var_dump($products);
+// var_dump($product2);
+$vote = $_POST["rate"];
+$product1->setRating(4);
+
+$products =  [$product1, $product2,$product3];
+ var_dump($product1);
+//var_dump($products);
 
 
 ?>
@@ -57,9 +57,14 @@ var_dump($products);
   <span>&euro; <?= $item->getPrice()?></span>
 
   <span><?= $item->productType?></span>
-
+  <?php  if($item->getRating() <> null):?>
+  <span>Voto: <?=$item->getRating();?></span>
+  <?php endif;?>
   <div class="mt-2">
   <a href="#" class="btn btn-success">Add to Cart</a>
+  <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  Add Vote
+</button>
   </div>
 
 </div>
@@ -67,8 +72,31 @@ var_dump($products);
 <?php endforeach?>
 </div>
   </div>
+  <!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Rate this product</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+       <form action="index.php" method="POST">
+        <input type="text" id="rate" name="rate" >
+       </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Understood</button>
+      </div>
+    </div>
+  </div>
+</div>
   
-  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     
 </body>
 </html>

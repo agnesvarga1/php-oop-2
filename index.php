@@ -5,14 +5,19 @@ include_once __DIR__."./models/Food.php";
 include_once __DIR__."./models/Toy.php";
 include_once __DIR__."./models/Bed.php";
 require_once __DIR__."./traits/rates.php";
-
-$product1 = new Bed ("Luxory Cat Heaven",15.99,"./imgs/catbed.webp", new Pettype("cat"));
-$product2 = new Food("Premium Meat Delish",1.59, "./imgs/dogfood.jpg",new Pettype("dog"));
-$product3 = new Toy("Tennis Ball for Dogs",2.99,"./imgs/dogball.webp", new Pettype("dog"));
+$dog = new Pettype("dog");
+$cat = new Pettype("cat");
+$product1 = new Bed ("Luxory Cat Heaven",15.99, $cat,"./imgs/catbed.webp");
+$product2 = new Food("Premium Meat Delish",1.59, $dog,"./imgs/dogfood.jpg");
+$product3 = new Toy("Tennis Ball for Dogs",2.99, $dog,"./imgs/dogball.webp");
 
 // var_dump($product2);
 $vote = $_POST["rate"] ?? null;
+if($vote <> null){
+
+}
 $product1->setRating(4);
+
 try{
   $product2->setRating(10);
   var_dump($product2->getRating);
@@ -22,6 +27,7 @@ try{
 
 $products =  [$product1, $product2,$product3];
  //var_dump($product1);
+
 //var_dump($products);
 
 
@@ -45,24 +51,22 @@ $products =  [$product1, $product2,$product3];
 <?php foreach ($products as $item): ?>
   
   <div class="card m-2" style="width: 18rem;">
-   <?php if(($item->img)):?>
-  <img src="<?= $item->img;?>" class="card-img-top " alt="product image">
-  <?php else :?>
-    <p>No image</p>
-   
-<?php endif;?>
+
+  <img src="<?= $item->getimg();?>" class="card-img-top " alt="product image">
+
+
   <div class="card-body">
   <div>
-  <?php if($item->animal):?>
-  <i  class="fa-solid fa-dog <?= ( $item->animal->pettype == "dog" ) ? 'd-block' : 'd-none' ?>"></i>
-  <i class="fa-solid fa-cat <?= ( $item->animal->pettype == "cat" ) ? 'd-block' : 'd-none' ?>"></i>
+
+  <i  class="fa-solid fa-dog <?= ( $item->petType->pettype == "dog" ) ? 'd-block' : 'd-none' ?>"></i>
+  <i class="fa-solid fa-cat <?= ( $item->petType->pettype == "cat" ) ? 'd-block' : 'd-none' ?>"></i>
     
-  <?php endif;?>
+ 
   </div>
   <h5 class="card-title"><?= $item->getProductName()?></h5>
   <span>&euro; <?= $item->getPrice()?></span>
 
-  <span><?= $item->productType?></span>
+  <span><?= $item->getproductType();?></span> 
   <?php  if($item->getRating() <> null):?>
   <span>Voto: <?=$item->getRating();?></span>
   <?php endif;?>
@@ -92,12 +96,13 @@ $products =  [$product1, $product2,$product3];
       <div class="modal-body">
        <form action="index.php" method="POST">
         <input type="text" id="rate" name="rate" >
-       </form>
+ 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Add your vote</button>
+        <button type="submit" class="btn btn-primary">Add your vote</button>
       </div>
+      </form>
     </div>
   </div>
 </div>

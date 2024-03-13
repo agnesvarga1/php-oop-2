@@ -1,12 +1,19 @@
 <?php
 
 trait ProductRates{
+    
+   // protected $rateArr;
     protected $rate;
-
+    
 
     public function getRating(){
         return $this->rate;
     }
+    
+    // public function calcRateValue(){
+       
+    // }
+    
 
     public function setRating($rate){
         if(!is_numeric($rate)){
@@ -14,6 +21,7 @@ trait ProductRates{
         }elseif ($rate< 0 || $rate > 5 ) {
             throw new RangeException( "Inserire un valore compreso tra 0 e 5");
         }else{
+
             $this->rate = $rate;
         }
      

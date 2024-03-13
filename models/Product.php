@@ -1,22 +1,24 @@
 <?php
 require_once __DIR__ .  '/../traits/rates.php';
 class Product {
-    protected $productName;
+    protected $name;
     protected $price;
-    public $productType;
-    public $img;
+   // public $productType;
+  
+    public $petType;
     use ProductRates;
-   public function __construct($_name,$_price, $_type="",$_img=""){
-        $this->productName = $_name;
+   public function __construct($_name,$_price,Pettype $_pettype){
+        $this->name = $_name;
         $this->price = $_price;
-        $this->productType =$_type;
-        $this->img = $_img;
+        //$this->productType =$_type;
+ 
+        $this->petType = $_pettype;
     }
 
     
 
     public function getProductName(){
-        return $this ->productName;
+        return $this ->name;
     }
 
 

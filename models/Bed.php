@@ -1,23 +1,29 @@
 <?php
 require_once __DIR__ .  '/../traits/rates.php';
 class Bed extends Product {
-    public $animal;
-    public $prodCat = "Bed";
-    public $img;
+ 
+
+    protected $img;
     use ProductRates;
- public function __construct($_productName , $_price,$_img,Pettype $_animal){
-         parent :: __construct($_productName, $_price,$this->prodCat );
-         $this->animal = $_animal;
-         $this->img = $_img;
+    public function __construct($_name,$_price,Pettype $_pettype,$_img=""){
+         parent :: __construct( $_name,$_price,$_pettype);
+        $this->img =$_img;
     }
    
-//  public function getimg(){
-//   return $this->img;
-   
-//  }
+    
+    public function getimg(){
+        return $this->img;
+         
+       }
+
+    public function getProductType(){
+        return get_class();
+    }
+      
+ }
 
 //  public function getCat(){
 //     return $this->prodCat;
- }
+
 
 
